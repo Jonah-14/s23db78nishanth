@@ -1,7 +1,7 @@
 # f23wb78nishanth
 Webapps Lab 10
 
-link to remote Render server[https://f23wb78nishanth.onrender.com/](https://f23wb78nishanth.onrender.com/)
+link to remote Render server[https://s23db78nishanth.onrender.com/](https://s23db78nishanth.onrender.com/)
 
 class Icecreams{
   constructor(flavor, color, Price) {
