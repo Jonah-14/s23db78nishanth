@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  - const results = [{ flavor: "Vanilla", type: "Classic", rating: 4.5 },{ flavor: "Chocolate", type: "Premium", rating: 4.8 },{ flavor: "Strawberry", type: "FruitFlavored", rating: 4.2 }]
+
+  div(class="container-fluid")
+    div(class="row")
+      each icecream, index in results 
+
+        div(class="col-sm-2", onclick=`buy(${index})`) #{icecream.flavor}, #{icecream.type}, #{icecream.rating}
+        
+  script.
+    function buy(a) {
+      alert(`You purchased Item ${a+1}`)
+    }
