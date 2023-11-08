@@ -10,6 +10,18 @@ exports.icecream_list = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
+    // VIEWS
+// Handle a show all view
+exports.icecream_view_all_Page = async function(req, res) {
+    try{
+    theCostumes = await icecream.find();
+    res.render('icecream', { title: 'icecream Search Results', results: theCostumes });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
     
 // for a specific icecream.
 exports.icecream_detail = function(req, res) {
