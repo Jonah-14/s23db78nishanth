@@ -78,3 +78,15 @@ exports.icecream_update_put = async function(req, res) {
     failed`);
     }
     };
+    // Handle icecream delete on DELETE.
+exports.icecream_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await icecream.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
