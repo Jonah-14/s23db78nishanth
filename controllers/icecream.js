@@ -2,8 +2,8 @@ var icecream = require('../models/icecream');
 // List of all icecream
 exports.icecream_list = async function(req, res) {
     try{
-    theCostumes = await icecream.find();
-    res.send(theCostumes);
+    theicecreams = await icecream.find();
+    res.send(theicecreams);
     }
     catch(err){
     res.status(500);
@@ -14,8 +14,8 @@ exports.icecream_list = async function(req, res) {
 // Handle a show all view
 exports.icecream_view_all_Page = async function(req, res) {
     try{
-    theCostumes = await icecream.find();
-    res.render('icecream', { title: 'icecream Search Results', results: theCostumes });
+    theicecreams = await icecream.find();
+    res.render('icecream', { title: 'icecream Search Results', results: theicecreams });
     }
     catch(err){
     res.status(500);
@@ -41,7 +41,7 @@ exports.icecream_create_post = async function(req, res) {
     // We are looking for a body, since POST does not have query parameters.
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
-    // {"costume_type":"goat", "cost":12, "size":"large"}
+    // {"icecream_type":"goat", "cost":12, "size":"large"}
     document.flavor = req.body.flavor;
     document.type = req.body.type;
     document.rating = req.body.rating;
@@ -88,5 +88,18 @@ exports.icecream_delete = async function(req, res) {
     } catch (err) {
     res.status(500)
     res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+    // Handle a show one view with id specified by query
+exports.icecream_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await icecream.findById( req.query.id)
+    res.render('icecreamdetail',
+    { title: 'icecream Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
     }
     };
