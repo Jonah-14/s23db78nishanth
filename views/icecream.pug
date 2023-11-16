@@ -2,15 +2,21 @@ extends layout
 
 block content
   h1= title
-  - const results1  = [{ flavor: "Vanilla", type: "Classic", rating: 4.5 },{ flavor: "Chocolate", type: "Premium", rating: 4.8 },{ flavor: "Strawberry", type: "FruitFlavored", rating: 4.2 }]
+  - const results1 = []
 
-  div(class="container-fluid")
+  div(class="container mt-4")
     div(class="row")
-      each icecream, index in results 
 
-        div(class="col-sm-2", onclick=`buy(${index})`) #{icecream.flavor}, #{icecream.type}, #{icecream.rating}
-        
+      each icecream, index in results
+        div(class="col-sm-4 mb-3 icecream-card")
+          div(class="card")
+            div(class="card-body")
+              h3(class="card-text") #{icecream.flavor}
+              p(class="card-text") Type: #{icecream.type}
+              p(class="card-text") Rating: #{icecream.rating}
+              button(class="btn btn-primary" onclick=`buy(${index})`) Buy
+
   script.
     function buy(a) {
-      alert(`You purchased Item ${a+1}`)
+      alert(`You purchased Item ${a + 1}`);
     }

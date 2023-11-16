@@ -2,21 +2,25 @@ extends layout
 
 block content
   h1= title
-  - let icecreamid = toShow._id
-  - let flavour = toShow.flavour
-  - let type = toShow.type
-  - let rating = toShow.rating
 
-  div
-    div.row
-      div.icecreamAttr.mr-3 Icecream ID is:
-      div #{icecreamid}
-    div.row
-      div.icecreamAttr.mr-3 Icecream flavour is:
-      div #{flavour}
-    div.row
-      div.icecreamAttr.mr-3 Icecream type is:
-      div #{type}
-    div.row
-      div.icecreamAttr.mr-3 Icecream rating is:
-      div #{rating}
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let icecreamid = toShow._id
+    - let flavour = toShow.flavour
+    - let type = toShow.type
+    - let rating = toShow.rating
+
+    div
+      div.row
+        div.icecreamAttr.mr-3 Icecream ID is:
+        div #{icecreamid}
+      div.row
+        div.icecreamAttr.mr-3 Icecream flavour is:
+        div #{flavour}
+      div.row
+        div.icecreamAttr.mr-3 Icecream type is:
+        div #{type}
+      div.row
+        div.icecreamAttr.mr-3 Icecream rating is:
+        div #{rating}
