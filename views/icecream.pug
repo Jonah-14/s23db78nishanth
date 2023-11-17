@@ -8,15 +8,16 @@ block content
     div(class="row")
 
       each icecream, index in results
+        - let destination = `dispatch("/icecream/update?id=${icecream._id}")`
         div(class="col-sm-4 mb-3 icecream-card")
           div(class="card")
             div(class="card-body")
               h3(class="card-text") #{icecream.flavor}
               p(class="card-text") Type: #{icecream.type}
               p(class="card-text") Rating: #{icecream.rating}
-              button(class="btn btn-primary" onclick=`buy(${index})`) Buy
+              button.btn(class="btn-primary ml-1", onclick=destination) Update
 
   script.
-    function buy(a) {
-      alert(`You purchased Item ${a + 1}`);
+    function dispatch(path){
+      window.location.href = path;
     }
