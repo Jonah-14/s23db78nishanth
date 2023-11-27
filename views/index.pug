@@ -1,8 +1,22 @@
+//- extends layout
+
+//- block content
+//-   h1= title
+//-   p Hi i am Jonah Nishanth #{title}
+//-   button(type="button" class="btn btn-info" onclick="goFaster()") Info
+//-   br
+//-   a(href='http://localhost:3000/icecream') Click Here to Visit icecream Website
+
 extends layout
 
 block content
-  h1= title
-  p Hi i am Jonah Nishanth #{title}
-  button(type="button" class="btn btn-info" onclick="goFaster()") Info
-  br
-  a(href='http://localhost:3000/icecream') Click Here to Visit icecream Website
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/icecream") Take me to ice cream
+    br
+    a(href="/logout") Logout
+
