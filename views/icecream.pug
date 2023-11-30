@@ -16,8 +16,17 @@ block content
               p(class="card-text") Type: #{icecream.type}
               p(class="card-text") Rating: #{icecream.rating}
               button.btn(class="btn-primary ml-1", onclick=destination) Update
+              button.btn(class="btn-primary ml-1", onclick=`deleteIcecream('${icecream._id}')`) delete
+              button.btn(class="btn-primary ml-1", onclick=`detailIcecream('${icecream._id}')`) detail
 
   script.
     function dispatch(path){
       window.location.href = path;
+    }
+    function deleteIcecream(id) {
+      window.location.href='/icecream/delete/?id='+id;
+    }
+
+    function detailIcecream(id) {
+      window.location.href='/icecream/detail/?id='+id;
     }
